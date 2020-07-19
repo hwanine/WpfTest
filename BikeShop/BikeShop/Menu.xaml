@@ -6,13 +6,41 @@
       xmlns:local="clr-namespace:BikeShop"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Menu">
+      Title="Menu"
+      Background="{StaticResource background}">
 
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}" >
+                        <Grid>
+                            <Ellipse Fill="#AA000000" Margin="10,10,0,0" />
+                            <Ellipse Fill="{TemplateBinding Background}" Margin="0,0,10,10" />
+                            <Viewbox Margin="5,5,15,15">
+                                <ContentPresenter/>
+                            </Viewbox>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Storyboard x:Key="Storyboard1">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="button">
+                <EasingColorKeyFrame KeyTime="0:0:1" Value="#FFEE4040"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+        </EventTrigger>
+    </Page.Triggers>
     <Grid>
-        <Button Content="Products" HorizontalAlignment="Left" Margin="35,87,0,0" VerticalAlignment="Top" Width="101" Height="90"/>
-        <Button Content="Live support" HorizontalAlignment="Left" Margin="153,87,0,0" VerticalAlignment="Top" Width="101" Height="90"/>
+        <Button x:Name="button" Content="Products" HorizontalAlignment="Left" Margin="35,87,0,0" VerticalAlignment="Top" Width="101" Height="90" Click="Button_Click_2"/>
+        <Button Content="Live support" HorizontalAlignment="Left" Margin="153,87,0,0" VerticalAlignment="Top" Width="101" Height="90" Click="Button_Click_1"/>
         <Button Content="Email support" HorizontalAlignment="Left" Margin="275,87,0,0" VerticalAlignment="Top" Width="101" Height="90" Click="Button_Click"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Adventure Works" VerticalAlignment="Top" RenderTransformOrigin="0.642,1.125" Margin="56,191,0,0" Height="54" Width="274" FontSize="30px" FontStyle="Italic"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Adventure Works" VerticalAlignment="Top" RenderTransformOrigin="0.642,1.125" Margin="56,191,0,0" Height="54" Width="274" FontSize="30px" FontStyle="Italic" />
 
     </Grid>
 </Page>

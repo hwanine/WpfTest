@@ -4,6 +4,22 @@
              xmlns:local="clr-namespace:BikeShop"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <LinearGradientBrush x:Key="background">
+            <GradientStop Color="#FFDBFFE7" Offset="0" />
+            <GradientStop Color="#FF03882D" Offset="1" />
+        </LinearGradientBrush>
+
+        <Style x:Key="niceButton" TargetType="Button">
+            <Setter Property="Width" Value="50" />
+            <Setter Property="Height" Value="50" />
+            <Setter Property="Background" >
+                <Setter.Value>
+                    <LinearGradientBrush>
+                        <GradientStop Color="Red" />
+                        <GradientStop Color="Yellow" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>
